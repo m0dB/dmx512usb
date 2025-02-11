@@ -31,6 +31,6 @@ The example application toggles the first 4 DMX channels between 0 and 255 at 40
 
 ## References
 
-https://en.wikipedia.org/wiki/DMX512
-https://github.com/njazz/DMX485/
-https://forum.lazarus.freepascal.org/index.php?topic=5773.0
+- https://en.wikipedia.org/wiki/DMX512
+- https://github.com/njazz/DMX485/
+- https://forum.lazarus.freepascal.org/index.php?topic=5773.0
