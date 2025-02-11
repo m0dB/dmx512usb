@@ -4,11 +4,11 @@
 #include <string>
 
 namespace {
-void checkStatus(FT_STATUS ftStatus, const char* str) {
-    if (ftStatus != FT_OK) {
-        throw std::runtime_error(std::string("DMX512USB: ") + std::string(str) + std::string(" failed with status: ") + std::to_string(static_cast<int>(ftStatus)));
+    void checkStatus(FT_STATUS ftStatus, const char* str) {
+        if (ftStatus != FT_OK) {
+            throw std::runtime_error(std::string("DMX512USB: ") + std::string(str) + std::string(" failed with status: ") + std::to_string(static_cast<int>(ftStatus)));
+        }
     }
-}
 } // namespace
 
 DMX512USB::DMX512USB(int deviceIndex) {
@@ -87,6 +87,7 @@ int DMX512USB::getDeviceCount() {
 std::string DMX512USB::getDeviceNameForIndex(int index) {
     PVOID pvoid{reinterpret_cast<PVOID>(index)};
     char buffer[256];
-    FT_ListDevices(pvoid, buffer, FT_LIST_BY_INDEX);
+    FT_STATUS ftStatus = FT_ListDevices(pvoid, buffer, FT_LIST_BY_INDEX);
+    checkStatus(ftStatus, "List devices");
     return std::string{buffer};
 }
